@@ -8,7 +8,7 @@ const ProfileMenu = ({ user }) => {
   return (
     <div className="relative">
       <button onClick={() => setShow(!show)}>
-        <FaCircleUser size={36} className="text-purple-800" />
+        <FaCircleUser size={40} className="text-purple-800" />
       </button>
 
       {show && (

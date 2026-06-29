@@ -7,16 +7,19 @@ const addTransactionModal = ({
     formData,
     setFormData,
     handleAddTransaction,
+    handleAdd,
+    isEditing,
+    selectedTransaction,
 }) => {
     const modalDesign = "w-full border-2 border-blue-300 rounded-lg p-1 mb-4"
     if (!showModal) return null;
     return (
         <>
-            <button onClick={() =>setShowModal(true)} className='bg-white text-purple-800 border-2 border-purple-700 text-sm p-2 rounded-xl font-sans font-semibold'>+ Add Transaction</button>
+            <button onClick={handleAdd} className='bg-white text-purple-800 border-2 border-purple-700 text-sm p-2 rounded-xl font-sans font-semibold'>+ Add Transaction</button>
             {showModal && (
                 <div className='fixed inset-0 bg-black/40 flex items-center justify-center z-50'>
                     <div className='flex flex-col bg-white rounded-2xl p-8 w-[420px] shadow-2xl'>
-                        <h2 className='flex justify-center text-xl font-bold font-sans text-blue-800'>Add Transaction</h2>
+                        <h2 className='flex justify-center text-xl font-bold font-sans text-blue-800'>{isEditing ? "Edit Transaction" : "Add Transaction"}</h2>
 
                         <label className='font-sans'>Title</label>
                         <input type="text" className={modalDesign} value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} />
@@ -47,7 +50,7 @@ const addTransactionModal = ({
 
                         <div className='flex justify-end gap-3'>
                             <button onClick={() => setShowModal(false)} className='px-4 py-2 rounded-lg border-2 border-blue-700 text-blue-900'>Cancel</button>
-                            <button onClick={handleAddTransaction} className='bg-indigo-600 text-white px-5 py-2 rounded-lg'>Add</button>
+                            <button onClick={handleAddTransaction} className='bg-indigo-600 text-white px-5 py-2 rounded-lg'>{isEditing ? "Update" : "Add"}</button>
                         </div>
                     </div>
                 </div>

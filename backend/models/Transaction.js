@@ -4,6 +4,7 @@ const transactionSchema = new mongoose.Schema({
     user:{
         type : mongoose.Schema.Types.ObjectId,
         ref: "User",
+        required:true,
     },
     title:{
         type : String,
@@ -24,6 +25,7 @@ const transactionSchema = new mongoose.Schema({
     },
     date:{
         type:Date,
+        required:true,
         default:Date.now,
     },
 }, {timestamps: true});

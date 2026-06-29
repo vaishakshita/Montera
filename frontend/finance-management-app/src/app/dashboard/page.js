@@ -52,10 +52,10 @@ const page = () => {
         })
 
         const data = await res.json();
-        console.log("RAW DATA:", data);
-        console.log("TYPE:", typeof data);
-        console.log("IS ARRAY:", Array.isArray(data));
-        console.log("TRANSACTIONS FIELD:", data?.transactions);
+        // console.log("RAW DATA:", data);
+        // console.log("TYPE:", typeof data);
+        // console.log("IS ARRAY:", Array.isArray(data));
+        // console.log("TRANSACTIONS FIELD:", data?.transactions);
         setTransactions(Array.isArray(data)
           ? data
           : Array.isArray(data?.transactions)
@@ -158,7 +158,7 @@ const page = () => {
           </button>
 
           {transactions.length === 0 ? (
-            <p className='text-xl font-mono font-bold mb-4'>No transactions</p>
+            <p className='text-xl font-mono font-bold mb-4'>Start by adding your first transaction.</p>
           ) : (
             recentTransactions.map((t) => (
               <div

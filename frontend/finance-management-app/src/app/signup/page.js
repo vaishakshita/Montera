@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Navbar from '../components/Navbar'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import toast from 'react-hot-toast'
 
 const page = () => {
   const [name, setName] = useState("")
@@ -29,14 +30,14 @@ const page = () => {
 
     const data = await res.json()
     if (password !== confirmpassword) {
-      alert("Passwords do not match");
+      toast.error("Passwords do not match");
       return;
     }
     if (res.ok) {
-      alert("Signup successfully")
+      toast.success("Account Created Successfully");
       router.push("/login")
     } else {
-      alert(data.message);
+      toast.error(data.message);
     }
   }
 

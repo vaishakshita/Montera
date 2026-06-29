@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Navbar from '../components/Navbar'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import toast from 'react-hot-toast'
 
 const page = () => {
   const [email, setEmail] = useState("")
@@ -31,8 +32,9 @@ const page = () => {
     if(res.ok){
       localStorage.setItem("token", data.token)
       router.push("/dashboard")
+      toast.success("Login Successful");
     } else{
-      alert(data.message)
+      toast.error(data.message)
     }
   }
 
