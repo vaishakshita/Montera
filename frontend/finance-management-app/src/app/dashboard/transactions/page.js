@@ -87,13 +87,6 @@ const page = () => {
       })
 
       const data = await res.json()
-      console.log(
-        data.map(t => ({
-          title: t.title,
-          date: t.date,
-          createdAt: t.createdAt,
-        }))
-      )
       // console.log("RAW DATA:", data);
       // console.log("TYPE:", typeof data);
       // console.log("IS ARRAY:", Array.isArray(data));
