@@ -33,21 +33,21 @@ Authentication
 
 ### Landing page
 
-![Landing Page](screenshots/landingPage.png)
+![Landing Page](Screenshots/landingPage.png)
 
 ### Dashboard
 
-![Dashboard](screenshots/dashboardPage.png)
+![Dashboard](Screenshots/dashboardPage.png)
 
 ### Transactions
 
-![Transactions](screenshots/transactionPage.png)
+![Transactions](Screenshots/transactionPage.png)
 
 ### Analytics
 
-![Analytics](screenshots/analyticsPage.png)
+![Analytics](Screenshots/analyticsPage.png)
 
-![Analytics](screenshots/analyticsPageSecond.png)
+![Analytics](Screenshots/analyticsPageSecond.png)
 
 
 ## Responsive design
@@ -59,7 +59,7 @@ Montera is fully responsive and optimized for desktops, tablet and mobile device
 - Optimized card layout
 - Wide chart visulalization
 
-![Desktop Dashboard](screenshots/dashboardPage.png)
+![Desktop Dashboard](Screenshots/dashboardPage.png)
 
 ---
 
@@ -72,7 +72,7 @@ Montera is fully responsive and optimized for desktops, tablet and mobile device
 
 | Mobile Dashboard | Mobile Analytics |
 |------------------|----------|
-| ![](screenshots/mobileDashboard.png) | ![](screenshots/mobileAnalytics.png) |
+| ![](Screenshots/mobileDashboard.png) | ![](Screenshots/mobileAnalytics.png) |
 
 
 ## Project Sturcture
@@ -98,8 +98,9 @@ Finance-tracker/
 |    |   ├─assets/
 |    |   ├─components/
 |    |   ├─dashboard/
-|    |   |  ├─transactions/
-|    |   |  └─analytics/
+|    |   |  ├─analytics/
+|    |   |  ├─planner/
+|    |   |  └─transactions/
 |    |   ├─login/
 |    |   ├─signup/
 |    |   ├─global.css
@@ -108,7 +109,7 @@ Finance-tracker/
 |    ├─package.json
 |    └─next.config.mjs
 | 
-├─screenshots/
+├─Screenshots/
 └─README.md
 
 ```
