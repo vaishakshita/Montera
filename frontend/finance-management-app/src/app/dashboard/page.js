@@ -3,16 +3,18 @@ import React from 'react'
 import { useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import ProfileMenu from "@/app/components/ProfileMenu"
+import BudgetOverview from './dashboardComponents/BudgetOverview'
+import RecentTransaction from './dashboardComponents/RecentTransaction'
+import SummaryCards from './dashboardComponents/MoneyCrads'
 
 
 const page = () => {
   const router = useRouter();
   const [user, setUser] = useState(null)
   const [transactions, setTransactions] = useState([])
-  const safeTransactions = Array.isArray(transactions) ? transactions : [];
-  const latestTransaction = safeTransactions[0];
+  const [budgets, setBudgets] = useState([])
 
-  //fetch user from login
+  //fetch user
   useEffect(() => {
     const token = localStorage.getItem("token")
     if (!token) {
@@ -39,6 +41,7 @@ const page = () => {
     fetchUser()
   }, [])
 
+
   //fetch transaction
   useEffect(() => {
     const fetchTransaction = async () => {
@@ -51,10 +54,6 @@ const page = () => {
         })
 
         const data = await res.json();
-        // console.log("RAW DATA:", data);
-        // console.log("TYPE:", typeof data);
-        // console.log("IS ARRAY:", Array.isArray(data));
-        // console.log("TRANSACTIONS FIELD:", data?.transactions);
         setTransactions(Array.isArray(data)
           ? data
           : Array.isArray(data?.transactions)
@@ -69,22 +68,37 @@ const page = () => {
     fetchTransaction()
   }, [])
 
-  //calculations
-  const income = safeTransactions.filter(t => t.type === "income").reduce((acc, t) => acc + t.amount, 0);
-  const expense = safeTransactions.filter(t => t.type === "expense").reduce((acc, t) => acc + t.amount, 0);
-  const savings = income - expense;
-  const recentTransactions = safeTransactions.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3)
+
+  //fetch budgets
+  useEffect(() => {
+    const fetchBudgets = async () => {
+      try {
+        const token = localStorage.getItem("token");
+
+        const res = await fetch("http://localhost:5000/api/budget", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        const data = await res.json();
+
+        setBudgets(Array.isArray(data) ? data : []);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchBudgets();
+  }, []);
 
   if (!Array.isArray(transactions)) {
     return <div>Loading or Invalid Data...</div>
   }
 
-  const formatCurrency = (amount) => `₹${amount.toLocaleString("en-IN")}`;
-
   return (
     <>
       <div className='ml-0 md:ml-10 py-3 px-5 md:p-2 max-w-6xl mx-auto'>
-
         {/* Top Bar */}
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-4xl font-semibold text-slate-800">
@@ -96,93 +110,21 @@ const page = () => {
         </div>
 
         {/* Cards */}
-        <div className='grid grid-cols-1 sm:grid-cols-3 gap-10 lg:gap-4 mt-6'>
-          <div className='bg-white p-4 rounded-xl shadow-xl border-4 border-green-700 h-40 w-50 lg:w-60'>
-            <h3 className='text-xl font-semibold font-sans text-slate-800'>Total Income</h3>
-            <p className='text-4xl text-green-700 font-bold font-sans'>{formatCurrency(income)}</p>
-            <p className="text-xs lg:text-sm text-gray-500 mt-4">
-              Updated: {latestTransaction?.date
-                ? new Date(latestTransaction.date).toLocaleString("en-IN", {
-                  day: "2-digit",
-                  month: "short",
-                  hour: "2-digit",
-                  minute: "2-digit",
-                })
-                : "No data"}
-            </p>
-          </div>
-
-          <div className='bg-white p-4 rounded-xl shadow-xl border-4 border-red-700 h-40 w-50 lg:w-60'>
-            <h3 className='text-xl font-semibold font-sans text-slate-800'>Total Expense</h3>
-            <p className='text-4xl text-red-700 font-bold font-sans'>{formatCurrency(expense)}</p>
-            <p className="text-xs lg:text-sm text-gray-500 mt-4">
-              Updated: {latestTransaction?.date
-                ? new Date(latestTransaction.date).toLocaleString("en-IN", {
-                  day: "2-digit",
-                  month: "short",
-                  hour: "2-digit",
-                  minute: "2-digit",
-                })
-                : "No data"}
-            </p>
-          </div>
-
-          <div className='bg-white p-4 rounded-xl shadow-xl border-4 border-orange-400 h-40 w-50 lg:w-60'>
-            <h3 className='text-xl font-semibold font-sans text-slate-800'>Total Savings</h3>
-            <p className='text-4xl text-orange-400 font-bold font-sans'>{formatCurrency(savings)}</p>
-            <p className="text-xs lg:text-sm text-gray-500 mt-4">
-              Updated: {latestTransaction?.date
-                ? new Date(latestTransaction.date).toLocaleString("en-IN", {
-                  day: "2-digit",
-                  month: "short",
-                  hour: "2-digit",
-                  minute: "2-digit",
-                })
-                : "No data"}
-            </p>
-          </div>
+        <div>
+          <SummaryCards transactions={transactions} />
         </div>
 
+        <div className='grid grid-cols-1 lg:grid-cols-3 gap-10 mt-8'>
+          {/* budget */}
+          <div>
+            <BudgetOverview budgets={budgets} />
+          </div>
 
+          {/* Transactions */}
+          <div className="lg:col-span-2">
+            <RecentTransaction transactions={transactions} />
+          </div>
 
-        {/* Transactions */}
-        <div className='my-4'>
-
-          <h2 className='text-2xl text-blue-900 font-sans font-bold mb-4'>Recent Transactions</h2>
-          <button
-            onClick={() => router.push("/dashboard/transactions")}
-            className="text-sm bg-purple-50 text-purple-800 border-2 border-purple-800 px-4 py-2 my-2 rounded-xl hover:bg-purple-700 hover:text-white transition"
-          >
-            View All →
-          </button>
-
-          {transactions.length === 0 ? (
-            <p className='text-xl font-mono font-bold mb-4'>Start by adding your first transaction.</p>
-          ) : (
-            recentTransactions.map((t) => (
-              <div
-                key={t._id}
-                className="flex justify-between bg-indigo-100 border-2 border-indigo-400 shadow-2xl rounded-2xl p-4 mb-4">
-                <div>
-                  <p className='text-xl font-sans font-semibold text-indigo-800'>{t.title}</p>
-                  <p className='text-slate-800 font-sans font-semibold'>{t.category}</p>
-                  <p>{t.date
-                    ? new Date(t.date).toLocaleString("en-IN", {
-                      day: "2-digit",
-                      month: "short",
-                      year: "2-digit",
-                    })
-                    : "No date"}</p>
-                </div>
-                <p className={
-                  t.type === "expense"
-                    ? "text-red-500 font-semibold"
-                    : "text-green-500 font-semibold"
-                }>{t.type === "expense" ? "-" : "+"} {formatCurrency(t.amount)}</p>
-
-              </div>
-            ))
-          )}
         </div>
       </div>
     </>

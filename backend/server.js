@@ -5,6 +5,7 @@ const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes")
 const transactionRoutes = require("./routes/transactionRoutes")
 const goalRoutes = require("./routes/goalRoutes")
+const budgetRoutes = require("./routes/budgetRoutes")
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(cors());
 app.use("/api/auth", authRoutes)
 app.use("/api/transactions", transactionRoutes)
 app.use("/api/goals", goalRoutes)
+app.use("/api/budget", budgetRoutes)
 
 //test route
 app.get("/", (req, res)=>{

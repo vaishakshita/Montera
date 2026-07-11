@@ -27,7 +27,11 @@ const GoalModal = ({ setShowGoalModal, fetchGoals, editingGoal, setEditingGoal }
         e.preventDefault();
 
         try {
-            const token = await localStorage.getItem("token")
+            if (Number(targetAmount) < Number(savedAmount)) {
+                toast.error("Target amount cannot be less than saved amount.");
+                return;
+            }
+            const token = localStorage.getItem("token")
             const url = editingGoal ? `http://localhost:5000/api/goals/${editingGoal._id}` : "http://localhost:5000/api/goals";
 
             const method = editingGoal ? "PUT" : "POST"
@@ -46,13 +50,11 @@ const GoalModal = ({ setShowGoalModal, fetchGoals, editingGoal, setEditingGoal }
                 })
             })
 
+
             if (!res.ok) {
                 throw new Error(editingGoal ? "Failed to update goal" : "Failed to create goal");
             }
-            if (Number(targetAmount) < Number(savedAmount)) {
-                toast.error("Target amount cannot be less than saved amount.");
-                return;
-            }
+
             fetchGoals();
             setTitle("");
             setTargetAmount("");
