@@ -1,4 +1,5 @@
 "use client"
+import ButtonLoader from "@/app/loading/ButtonLoader";
 import { useState, useEffect, useRef } from "react"
 import { useRouter } from "next/navigation";
 import { FaUser, FaCog, FaQuestionCircle, FaSignOutAlt } from "react-icons/fa";
@@ -30,9 +31,12 @@ const ProfileMenu = ({ user }) => {
   }, [])
 
   const [showLogoutModel, setShowLogoutModel] = useState(false)
+  const [logoutLoading, setLogoutLoading] = useState(false)
   const router = useRouter();
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    setLogoutLoading(true)
+    await new Promise((resolve) => setTimeout(resolve, 500))
     localStorage.removeItem("token");
     router.push("/");
   };
@@ -110,7 +114,7 @@ const ProfileMenu = ({ user }) => {
                   <p className="flex justify-center font-semibold text-lg mt-2">Are you sure you want to log out?</p>
                   <div className="flex justify-center gap-20 mt-6">
                     <button onClick={() => setShowLogoutModel(false)} className="px-4 py-2 rounded-lg border-2 border-gray-500 hover:bg-gray-100 transition">Cancel</button>
-                    <button onClick={handleLogout} className="px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700 transition">Logout</button>
+                    <button onClick={handleLogout} disabled={logoutLoading} className="px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700 transition">{logoutLoading ? <ButtonLoader /> : "Logout"}</button>
                   </div>
                 </div>
               </div>
