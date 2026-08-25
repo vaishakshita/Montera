@@ -49,7 +49,7 @@ const BottomNavbar = () => {
     return (
         <>
             {showLogoutModel && (
-                <div className="fixed inset-0 bg-black/40 flex justify-center items-center">
+                <div className="fixed inset-0 bg-black/40 flex justify-center items-center z-50">
                     <div className="bg-white rounded-2xl shadow-xl p-6 w-[90%] max-w-sm">
                         <h2 className="text-2xl font-bold text-center">Logout</h2>
                         <p className="flex justify-center font-semibold text-lg mt-2">Are you sure you want to log out?</p>
@@ -60,7 +60,7 @@ const BottomNavbar = () => {
                     </div>
                 </div>
             )}
-            <div className="fixed bottom-0 left-0 w-full bg-purple-800 border-t shadow-lg flex justify-around items-center py-2 z-50 lg:hidden">
+            <div className="fixed bottom-0 left-0 w-full bg-[#E8ECE8] border-r border-[#D5DDD7] border-t shadow-lg flex justify-around items-center py-2 z-50 lg:hidden">
                 {menuItems.map((item) => (
                     <Link
                         key={item.name}
@@ -68,8 +68,8 @@ const BottomNavbar = () => {
                         className={`flex flex-col items-center text-xs
 
                     ${pathname === item.path
-                                ? "text-purple-800 bg-white p-2 rounded-2xl"
-                                : "text-white"}
+                                ? "text-[#2F5D50] bg-[#DDE9DF] p-2 rounded-2xl"
+                                : "text-[#2F5D50]"}
 
                     `}
                     >
@@ -83,7 +83,7 @@ const BottomNavbar = () => {
 
                 <button
                     onClick={() => setShowLogoutModel(true)}
-                    className="flex flex-col items-center text-xs text-white"
+                    className="flex flex-col items-center text-xs text-[#2F5D50]"
                 >
 
                     <FiLogOut size={24} />

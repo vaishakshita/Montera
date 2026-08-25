@@ -149,10 +149,10 @@ const page = () => {
 
   return (
 
-    <div className='px-6'>
+    <div className='px-6 bg-[#F5F8F6]'>
       {goals.length === 0 && budgets.length === 0 ? (<EmptyPlanner onAddGoal={() => setShowGoalModal(true)} onAddBudget={() => setShowBudgetModal(true)}/>) : (
         <>
-          <h1 className='text-4xl font-bold text-purple-900 mb-8'>Financial Planner</h1>
+          <h1 className='text-4xl font-semibold text-[#166534] mb-8'>Financial Planner</h1>
           <SummaryCards totalSaved={totalSaved} totalTarget={totalTarget} activeGoals={activeGoals} />
 
           <GoalSection goals={goals} setShowGoalModal={setShowGoalModal} setEditingGoal={setEditingGoal} setShowDeleteModal={setShowDeleteModal} setSelectedGoal={setSelectedGoal} setShowSavingsModal={setShowSavingsModal} setSelectedGoalForSavings={setSelectedGoalForSavings} />

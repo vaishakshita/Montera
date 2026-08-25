@@ -116,13 +116,13 @@ const BudgetModel = ({ setShowBudgetModal, fetchBudgets, editingBudget, setEditi
     <div className='fixed inset-0 bg-black/40 flex justify-center items-center p-5 z-50'>
       <div className='bg-white rounded-2xl p-8 w-full max-w-md shadow-xl'>
         <div className='mb-6'>
-          <h2 className='text-3xl font-bold text-purple-900 mb-2'>{editingBudget ? "Edit Budget" : "Add New Budget"}</h2>
+          <h2 className='text-3xl font-bold text-green-700 mb-2'>{editingBudget ? "Edit Budget" : "Add New Budget"}</h2>
           <p className='text-gray-500 font-semibold mb-6'>{editingBudget ? "Update your budget details." : "Set a monthly budget for a spending category."}</p>
         </div>
         <form onSubmit={handleSubmit} className='space-y-5'>
           <div>
-            <label className="mb-2 block text-sm font-medium text-gray-700">Category</label>
-            <select value={category} onChange={(e) => setCategory(e.target.value)} className="w-full rounded-lg border border-gray-300 px-4 py-2 outline-none focus:border-purple-500">
+            <label className="mb-2 block text-sm font-medium text-[#173F35]">Category</label>
+            <select value={category} onChange={(e) => setCategory(e.target.value)} className="w-full rounded-lg bg-[#F8FAF8] border-2 border-[#9BAFA5] focus:border-[#2F6F5E] outline-none focus:ring-[#A8C1B6] mt-1 mb-1 px-4 py-3">
               <option value="">Select Category</option>
               {categories.map((item) => (
                 <option key={item} value={item}>{item}</option>
@@ -131,13 +131,13 @@ const BudgetModel = ({ setShowBudgetModal, fetchBudgets, editingBudget, setEditi
           </div>
 
           <div>
-            <label className='mb-2 block text-sm font-medium text-gray-700'>Budget Amount</label>
-            <input type="number" placeholder='Enter budget amount' value={amount} className="w-full rounded-lg border border-gray-300 px-4 py-2 outline-none focus:border-purple-500" onChange={(e) => setAmount(e.target.value)} />
+            <label className='mb-2 block text-sm font-medium text-[#173F35]'>Budget Amount</label>
+            <input type="number" placeholder='Enter budget amount' value={amount} className="w-full rounded-lg bg-[#F8FAF8] border-2 border-[#9BAFA5] focus:border-[#2F6F5E] outline-none focus:ring-[#A8C1B6] mt-1 mb-1 px-4 py-3" onChange={(e) => setAmount(e.target.value)} />
           </div>
 
           <div>
-            <label className='mb-2 block text-sm font-medium text-gray-700'>Month</label>
-            <select value={month} onChange={(e) => setMonth(Number(e.target.value))} className="w-full rounded-lg border border-gray-300 px-4 py-2 outline-none focus:border-purple-500">
+            <label className='mb-2 block text-sm font-medium text-[#173F35]'>Month</label>
+            <select value={month} onChange={(e) => setMonth(Number(e.target.value))} className="w-full rounded-lg bg-[#F8FAF8] border-2 border-[#9BAFA5] focus:border-[#2F6F5E] outline-none focus:ring-[#A8C1B6] mt-1 mb-1 px-4 py-3">
               {months.map((monthName, index) => (
                 <option key={index} value={index + 1}>{monthName}</option>
               ))}
@@ -145,8 +145,8 @@ const BudgetModel = ({ setShowBudgetModal, fetchBudgets, editingBudget, setEditi
           </div>
 
           <div>
-            <label className='mb-2 block text-sm font-medium text-gray-700'>Year</label>
-            <input type="number" value={year} className="w-full mt-2 mb-5 px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-purple-600" onChange={(e) => setYear(Number(e.target.value))} />
+            <label className='mb-2 block text-sm font-medium text-[#173F35]'>Year</label>
+            <input type="number" value={year} className="w-full mt-2 mb-5 px-4 py-3 rounded-xl bg-[#F8FAF8] border-2 border-[#9BAFA5] focus:border-[#2F6F5E] outline-none focus:ring-[#A8C1B6]" onChange={(e) => setYear(Number(e.target.value))} />
           </div>
 
           <div className='flex justify-end gap-3 pt-2'>
@@ -156,8 +156,8 @@ const BudgetModel = ({ setShowBudgetModal, fetchBudgets, editingBudget, setEditi
               }`}>Cancel</button>
 
             <button type='submit' disabled={loading} className={`rounded-lg px-5 py-2 text-white transition ${loading
-              ? "bg-purple-400 cursor-not-allowed"
-              : "bg-purple-600 hover:bg-purple-700"
+              ? "bg-green-400 cursor-not-allowed"
+              : "bg-green-800 hover:bg-green-900"
               }`}>
               {loading ? (
                 <ButtonLoader

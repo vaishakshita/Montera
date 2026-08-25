@@ -51,39 +51,40 @@ const page = () => {
           <EmptyAnalytics />
         ) : (
           <div className='p-6 pb-24'>
-            <h1 className='text-2xl md:text-3xl font-bold font-sans text-purple-800'>Compare your monthly spending</h1>
+            <h1 className='text-2xl md:text-3xl font-semibold text-[#172B2A]'>Compare your monthly spending</h1>
+            <p className="text-[#64748B] text-sm sm:text-base mt-1"> Track your income, expenses, and spending patterns. </p>
+
             {/* income/expense cards */}
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6'>
-              <div className='bg-white p-4 rounded-xl shadow-xl border-4 border-green-700 opacity-80 xl:w-1/2'>
-                <h3 className='text-lg font-semibold font-sans text-slate-800'>Total Income</h3>
-                <p className='text-2xl md:text-3xl text-green-700 font-bold font-sans'>{formatCurrency(income)}</p>
-                <p className="text-sm text-gray-500">
-                  Updated: {latestTransaction?.date
+              <div className="bg-white rounded-2xl border border-[#D5DDD7] shadow-md p-5"> 
+                <h3 className="text-sm sm:text-base font-semibold text-[#64748B]"> Total Income </h3> 
+                <p className="text-2xl md:text-3xl font-bold text-[#2F7D68] mt-2"> {formatCurrency(income)} </p> 
+                <p className="text-xs sm:text-sm text-[#94A3B8] mt-2"> Updated: {latestTransaction?.date
                     ? new Date(latestTransaction.date).toLocaleString("en-IN", {
                       day: "2-digit",
                       month: "short",
                       hour: "2-digit",
                       minute: "2-digit",
                     })
-                    : "No data"}
-                </p>
+                    : "No data"} 
+                </p> 
               </div>
 
-              <div className='bg-white p-4 rounded-xl shadow-xl border-4 border-red-700 opacity-80 xl:w-1/2'>
-                <h3 className='text-lg font-semibold font-sans text-slate-800'>Total Expense</h3>
-                <p className='text-2xl md:text-3xl text-red-700 font-bold font-sans'>{formatCurrency(expense)}</p>
-                <p className="text-sm text-gray-500">
-                  Updated: {latestTransaction?.date
+              <div className="bg-white rounded-2xl border border-[#E8CFCF] shadow-md p-5"> 
+                <h3 className="text-sm sm:text-base font-semibold text-[#64748B]"> Total Expense </h3> 
+                <p className="text-2xl md:text-3xl font-bold text-[#D94A4A] mt-2"> {formatCurrency(expense)} </p> 
+                <p className="text-xs sm:text-sm text-[#94A3B8] mt-2"> Updated: {latestTransaction?.date
                     ? new Date(latestTransaction.date).toLocaleString("en-IN", {
                       day: "2-digit",
                       month: "short",
                       hour: "2-digit",
                       minute: "2-digit",
                     })
-                    : "No data"}
-                </p>
+                    : "No data"} 
+                </p> 
               </div>
             </div>
+            
             <div className='flex flex-col gap-4 mt-6'>
               <div className='mt-6'>
                 <IncomeExpenseChart transactions={transactions} />

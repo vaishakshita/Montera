@@ -7,7 +7,7 @@ const EmptyDashboard = () => {
 
   return (
     <div className="mt-10 bg-white rounded-3xl shadow-lg p-8 mx-10">
-      <h2 className="text-3xl font-bold text-purple-800">
+      <h2 className="text-3xl font-bold text-emerald-800">
         Welcome to Montera 👋
       </h2>
       <p className="text-gray-600 mt-2">
@@ -33,7 +33,7 @@ const EmptyDashboard = () => {
 
           <button
             onClick={() => router.push("/dashboard/transactions")}
-            className="mt-5 bg-purple-700 text-white px-5 py-2 rounded-xl hover:bg-purple-800"
+            className="mt-5 bg-emerald-700 text-white px-5 py-2 rounded-xl hover:bg-emerald-800"
           >
             Add Transaction
           </button>
@@ -55,7 +55,7 @@ const EmptyDashboard = () => {
 
           <button
             onClick={() => router.push("/dashboard/planner")}
-            className="mt-5 bg-purple-700 text-white px-5 py-2 rounded-xl hover:bg-purple-800"
+            className="mt-5 bg-emerald-700 text-white px-5 py-2 rounded-xl hover:bg-emerald-800"
           >
             Create Budget
           </button>
@@ -77,7 +77,7 @@ const EmptyDashboard = () => {
 
           <button
             onClick={() => router.push("/dashboard/planner")}
-            className="mt-5 bg-purple-700 text-white px-5 py-2 rounded-xl hover:bg-purple-800"
+            className="mt-5 bg-emerald-700 text-white px-5 py-2 rounded-xl hover:bg-emerald-800"
           >
             Create Goal
           </button>
@@ -85,7 +85,7 @@ const EmptyDashboard = () => {
 
       </div>
 
-      <div className="mt-10 bg-purple-50 rounded-2xl p-5">
+      <div className="mt-10 bg-green-50 rounded-2xl p-5">
         <h3 className="font-semibold text-xl mb-3">
           What you'll unlock
         </h3>

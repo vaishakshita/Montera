@@ -40,17 +40,17 @@ console.log(chartData)
 const formatCurrency = (amount) => `₹${amount.toLocaleString("en-IN")}`;
 
   return (
-    <div className='bg-white rounded-3xl shadow-lg p-6'>
-        <h2 className='text-2xl font-bold mb-6'>Income vs Expense</h2>
+    <div className='bg-white rounded-2xl border border-[#D5DDD7] shadow-md p-5'>
+        <h2 className='text-2xl font-bold text-[#172B2A] mb-5'>Income vs Expense</h2>
         <ResponsiveContainer width="100%" height={350}>
             <BarChart data={chartData}>
-                <CartesianGrid strokeDasharray="3 3"/>
-                <XAxis dataKey="month"/>
-                <YAxis tickFormatter={formatCurrency}/>
-                <Tooltip formatter={formatCurrency}/>
-                <Legend/>
-                <Bar dataKey="expense" fill="#ef4444" radius={[6,6,0,0]}/>
-                <Bar dataKey="income" fill="#4f46e5" radius={[6,6,0,0]}/>
+                <CartesianGrid stroke="#E5E7EB" strokeDasharray="3 3"/>
+                <XAxis dataKey="month" tick={{ fontSize: 12, fill: "#64748B", }} axisLine={{ stroke: "#CBD5E1", }} tickLine={false}/>
+                <YAxis tickFormatter={formatCurrency} tick={{ fontSize: 12, fill: "#64748B", }} axisLine={false} tickLine={false} width={65}/>
+                <Tooltip formatter={(value, name) => [ formatCurrency(value), name === "income" ? "Income" : "Expense", ]} labelStyle={{ color: "#172B2A", fontWeight: "600", }} contentStyle={{ borderRadius: "12px", border: "1px solid #D5DDD7", boxShadow: "0 4px 12px rgba(0,0,0,0.08)", }}/>
+                <Legend wrapperStyle={{ paddingTop: "12px", fontSize: "14px", }} formatter={(value) => value === "income" ? "Income" : "Expense" }/>
+                <Bar dataKey="expense" name="expense" fill="#ef4444" radius={[6,6,0,0]}/>
+                <Bar dataKey="income" name="income" fill="#2F7D68" radius={[6,6,0,0]}/>
             </BarChart>
         </ResponsiveContainer>
     </div>

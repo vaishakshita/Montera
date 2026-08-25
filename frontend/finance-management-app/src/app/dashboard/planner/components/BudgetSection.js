@@ -5,13 +5,13 @@ const BudgetSection = ({ budgets, setShowBudgetModal, setEditingBudget, setShowD
     return (
         <div className='mt-10'>
             <div className='flex items-center justify-between mb-6'>
-                <h2 className='text-3xl font-bold text-purple-900'>Category Budgets</h2>
-                <button onClick={() => { setEditingBudget(null); setShowBudgetModal(true); }} className="rounded-lg bg-purple-600 px-4 py-2 text-white hover:bg-purple-700 transition">+ Add Budget</button>
+                <h2 className='text-3xl font-bold text-green-800'>Category Budgets</h2>
+                <button onClick={() => { setEditingBudget(null); setShowBudgetModal(true); }} className="rounded-lg bg-green-600 px-4 py-2 text-white hover:bg-green-700 transition">+ Add Budget</button>
             </div>
 
             <div className='space-y-5'>
                 {budgets.length === 0 ? (
-                <div className="rounded-xl border border-dashed p-10 text-center text-gray-500">No budgets added yet. Create your first category budget to start tracking your monthly spending.</div>
+                <div className="rounded-xl border border-dashed border-green-300 p-10 text-center text-gray-500">No budgets added yet. Create your first category budget to start tracking your monthly spending.</div>
             ) : (
                 <div>{budgets.map((budget) => (
                     <BudgetCard 

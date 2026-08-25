@@ -8,6 +8,8 @@ import { FiSearch } from "react-icons/fi";
 import { MdEdit } from "react-icons/md";
 import { FaPlusCircle } from "react-icons/fa";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { FaCircleArrowUp } from "react-icons/fa6";
+import { FaArrowCircleDown } from "react-icons/fa";
 
 import ProfileMenu from '@/app/components/ProfileMenu'
 import TransactionSkeleton from '@/app/components/loading/TransactionSkeleton';
@@ -56,67 +58,67 @@ const page = () => {
 
 
   //fetch user info
-    const fetchUser = async () => {
-      const token = localStorage.getItem("token")
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/me`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        }
-      })
-      const data = await res.json()
-      if (res.ok) {
-        setUser(data.user)
-      } else {
-        router.push("/login")
+  const fetchUser = async () => {
+    const token = localStorage.getItem("token")
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/me`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
       }
+    })
+    const data = await res.json()
+    if (res.ok) {
+      setUser(data.user)
+    } else {
+      router.push("/login")
     }
-    
+  }
+
 
   //fetch transaction
   const fetchTransaction = async () => {
-      const token = localStorage.getItem("token")
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/transactions`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        }
-      })
+    const token = localStorage.getItem("token")
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/transactions`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
+    })
 
-      const data = await res.json()
-      const fetchedTransactions = Array.isArray(data)
-        ? data
-        : Array.isArray(data?.transactions)
-          ? data.transactions
-          : [];
+    const data = await res.json()
+    const fetchedTransactions = Array.isArray(data)
+      ? data
+      : Array.isArray(data?.transactions)
+        ? data.transactions
+        : [];
 
-      setTransactions(fetchedTransactions)
-      setDisplayTransaction(fetchedTransactions)
+    setTransactions(fetchedTransactions)
+    setDisplayTransaction(fetchedTransactions)
   };
 
   useEffect(() => {
-  const loadTransactionsPage = async () => {
-    const token = localStorage.getItem("token");
+    const loadTransactionsPage = async () => {
+      const token = localStorage.getItem("token");
 
-    if (!token) {
-      router.push("/login");
-      return;
-    }
+      if (!token) {
+        router.push("/login");
+        return;
+      }
 
-    setLoading(true);
+      setLoading(true);
 
-    try {
-      await Promise.all([
-        fetchUser(),
-        fetchTransaction(),
-      ]);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+      try {
+        await Promise.all([
+          fetchUser(),
+          fetchTransaction(),
+        ]);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  loadTransactionsPage();
-}, [router]);
+    loadTransactionsPage();
+  }, [router]);
 
   // Add transaction
   const handleAddTransaction = async (e) => {
@@ -185,7 +187,7 @@ const page = () => {
           : "",
       })
       setShowModal(true)
-    } catch(error){
+    } catch (error) {
       console.log(error)
     }
 
@@ -217,7 +219,7 @@ const page = () => {
       }
     } catch (error) {
       console.log(error)
-    } finally{
+    } finally {
       setLoading(false);
     }
   }
@@ -300,20 +302,20 @@ const page = () => {
 
   const formatCurrency = (amount) => `₹${amount.toLocaleString("en-IN")}`;
   if (loading) {
-  return <TransactionSkeleton />;
-}
+    return <TransactionSkeleton />;
+  }
 
   return (
     <>
       <div className='ml-0 md:ml-10 py-3 px-5 md:p-2 max-w-6xl mx-auto'>
         {/* topsection */}
         <div className='flex flex-col md:flex-row justify-between items-center max-w-5xl mx-auto'>
-          <h1 className='text-2xl md:text-3xl font-bold font-sans text-purple-800'>TRANSACTIONS</h1>
+          <h1 className='text-2xl md:text-4xl font-semibold text-[#173F35]'>Transactions</h1>
 
           {transactions.length !== 0 &&
             <div className='flex gap-4 p-4'>
-              <button onClick={handleAdd} className='flex items-center gap-2 bg-white text-purple-800 border-2 border-purple-700 text-sm p-1 rounded-xl font-sans font-semibold'><FaPlusCircle size={20} /> Add Transaction</button>
-              <button className='rounded-lg px-4 py-2 bg-purple-800 text-white transition' onClick={() => setShowFilter(true)}><FaFilter size={15} /></button>
+              <button onClick={handleAdd} className='flex items-center gap-2 bg-white text-[#3F8065] border-2 border-[#3F8065] text-sm p-1 rounded-xl font-sans font-semibold'><FaPlusCircle size={20} /> Add Transaction</button>
+              <button className='rounded-lg px-4 py-2 bg-[#3F8065] text-white transition' onClick={() => setShowFilter(true)}><FaFilter size={15} /></button>
               <ProfileMenu user={user} />
             </div>
           }
@@ -322,38 +324,44 @@ const page = () => {
 
         {/* search */}
         {transactions.length !== 0 && <div className='relative w-full max-w-sm mx-auto md:ml-0'>
-          <input type="text" placeholder='Search transaction by title...' value={search} onChange={(e) => setSearch(e.target.value)} className='w-full border-2 border-blue-400 rounded-xl py-2 pl-4 pr-10 outline-none focus:border-blue-600' />
+          <input type="text" placeholder='Search transaction by title...' value={search} onChange={(e) => setSearch(e.target.value)} className='w-full border-2 border-green-700 rounded-xl py-2 pl-4 pr-10 outline-none focus:border-green-900' />
           <FiSearch size={20} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600" />
         </div>}
 
 
         {/* income/expense cards */}
         <div className='flex flex-col sm:flex-row gap-10 relative mx-auto mt-6'>
-          <div className='bg-white p-4 rounded-xl shadow-xl border-4 border-green-700 opacity-80'>
-            <h3 className='text-lg font-semibold font-sans text-slate-800'>Total Income</h3>
-            <p className='text-2xl md:text-3xl text-green-700 font-bold font-sans'>{formatCurrency(income)}</p>
-            <p className="text-sm text-gray-500">
+          <div className='flex flex-col items-center justify-center bg-white p-4 rounded-xl shadow-xl border-2 border-r border-[#D5DDD7] h-40 w-50 lg:w-60'>
+            <div className='flex flex-row gap-2'>
+              <FaCircleArrowUp size={30} className='text-[#3F8065]' />
+              <h3 className='text-sm font-semibold font-sans mt-1 text-[#3F8065]'>Total Income</h3>
+            </div>
+            <p className='text-4xl text-green-800 font-bold font-sans'>{formatCurrency(income)}</p>
+            <p className="text-xs lg:text-sm text-gray-500 mt-4">
               Updated: {latestTransaction?.date
                 ? new Date(latestTransaction.date).toLocaleString("en-IN", {
                   day: "2-digit",
                   month: "short",
-                  year: "2-digit"
+                  year: "2-digit",
                 })
-                : "No Transactions yet"}
+                : "No data"}
             </p>
           </div>
 
-          <div className='bg-white p-4 rounded-xl shadow-xl border-4 border-red-700 opacity-80'>
-            <h3 className='text-lg font-semibold font-sans text-slate-800'>Total Expense</h3>
-            <p className='text-2xl md:text-3xl text-red-700 font-bold font-sans'>{formatCurrency(expense)}</p>
-            <p className="text-sm text-gray-500">
+          <div className='flex flex-col items-center justify-center bg-white p-4 rounded-xl shadow-xl border-2 border-r border-[#D5DDD7] h-40 w-50 lg:w-60'>
+            <div className='flex flex-row gap-2'>
+              <FaArrowCircleDown size={30} className='text-[#3F8065]' />
+              <h3 className='text-sm font-semibold font-sans mt-1 text-[#3F8065]'>Total Expense</h3>
+            </div>
+            <p className='text-4xl text-gray-600 font-bold font-sans'>{formatCurrency(expense)}</p>
+            <p className="text-xs lg:text-sm text-gray-500 mt-4">
               Updated: {latestTransaction?.date
                 ? new Date(latestTransaction.date).toLocaleString("en-IN", {
                   day: "2-digit",
                   month: "short",
-                  year: "2-digit"
+                  year: "2-digit",
                 })
-                : "No Transactions yet"}
+                : "No data"}
             </p>
           </div>
         </div>
@@ -366,16 +374,16 @@ const page = () => {
         ) : (
           <div className='py-3 px-5 rounded-3xl mt-4 mx-auto max-h-[630px] overflow-y-auto'>
             {searchedTransactions.length === 0 ? (
-              <p className='text-lg font-bold'>No transactions found</p>
+              <p className='text-lg font-bold text-[#173F35]'>No transactions found</p>
             ) : (
               searchedTransactions.map((t) => (
                 <div
                   key={t._id}
-                  className="flex justify-between items-center bg-indigo-100 border-2 border-indigo-400 shadow-xl rounded-2xl p-4 mb-4">
+                  className="flex justify-between items-center bg-[#E1EEE8] border-2 border-[#9FC4B5] shadow-xl rounded-2xl p-4 mb-4">
                   <div>
-                    <p className='text-lg font-sans font-semibold text-indigo-800'>{t.title}</p>
-                    <p className='text-slate-700 text-sm font-medium font-sans'>{t.category}</p>
-                    <p className="text-sm text-gray-600">{t.date
+                    <p className='text-lg font-sans font-semibold text-[#2F6F5E]'>{t.title}</p>
+                    <p className='text-[#173F35] text-sm font-medium font-sans'>{t.category}</p>
+                    <p className="text-sm text-[#64748B]">{t.date
                       ? new Date(t.date).toLocaleString("en-IN", {
                         day: "2-digit",
                         month: "short",
@@ -385,10 +393,10 @@ const page = () => {
                     </p>
                     {/* buttons */}
                     <div className='flex gap-3 mt-3'>
-                      <button onClick={() => handleEdit(t)} className='rounded-lg bg-purple-700 p-2 text-purple-600 hover:bg-purple-800 transition'>
+                      <button onClick={() => handleEdit(t)} className='rounded-lg bg-green-700 p-2 text-purple-600 hover:bg-green-900 transition'>
                         <MdEdit className="text-white" />
                       </button>
-                      <button onClick={() => { setSelectedTransaction(t); setShowDeleteModal(true) }} className='rounded-lg bg-purple-700 p-2 text-white hover:bg-purple-800 transition'>
+                      <button onClick={() => { setSelectedTransaction(t); setShowDeleteModal(true) }} className='rounded-lg bg-green-700 p-2 text-white hover:bg-green-900 transition'>
                         <RiDeleteBin6Line className="text-white" />
                       </button>
                     </div>

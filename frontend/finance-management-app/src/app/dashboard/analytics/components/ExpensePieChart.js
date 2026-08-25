@@ -3,12 +3,7 @@ import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from "recha
 import React, { useState } from 'react'
 
 const COLORS = [
-    "#7C3AED", // Purple
-    "#3B82F6", // Blue
-    "#10B981", // Emerald
-    "#F59E0B", // Amber
-    "#EF4444", // Red
-    "#EC4899", // Pink
+    "#2F7D68", "#5FA88D", "#8BC9AE", "#D4A72C", "#D94A4A", "#6B7280",
 ];
 
 const monthNames = [
@@ -49,21 +44,14 @@ const ExpensePieChart = ({ transactions }) => {
     const totalExpense = chartData.reduce(
         (sum, item) => sum + item.value, 0
     )
-    console.log(chartData);
-    const formatCurrency = (amount) => amount.toLocaleString("en-IN");
-    if (chartData.length === 0) {
-        return (
-            <div className="bg-white rounded-3xl shadow-xl p-8 text-center">
-                <p className="text-gray-500">No expense data available</p>
-            </div>
-        )
-    }
+    
+    const formatCurrency = (amount) => Number(amount || 0).toLocaleString("en-IN");
 
     return (
-        <div className="bg-white rounded-3xl shadow-xl p-5">
+        <div className="bg-white rounded-2xl border border-[#D5DDD7] shadow-xl p-5">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-5">
-                <h2 className="text-xl font-bold">Expense by Category</h2>
-            <select value={selectedMonth} onChange={(e) => setSelectedMonth(e.target.value)} className="w-full sm:w-40 border-2 border-indigo-800 bg-blue-100 p-3 rounded-lg">
+                <h2 className="text-xl font-bold text-[#172B2A]">Expense by Category</h2>
+            <select value={selectedMonth} onChange={(e) => setSelectedMonth(e.target.value)} className="w-full sm:w-40 border border-[#2F7D68] bg-[#F4F8F5] text-[#172B2A] p-3 rounded-lg focus:ring-[#A8C8BC] cursor-pointer">
                 <option value="All">All Time</option>
                 {monthNames.map((month) => (
                     <option key={month} value={month}>{month}</option>
@@ -104,6 +92,7 @@ const ExpensePieChart = ({ transactions }) => {
                                     dominantBaseline="middle"
                                     fontSize="14"
                                     fontWeight="bold"
+                                    fill="#64748B"
                                 >
                                     {selectedMonth === "All" ? "Total Expense" : `${selectedMonth} Expense`}
                                 </text>
@@ -115,12 +104,13 @@ const ExpensePieChart = ({ transactions }) => {
                                     dominantBaseline="middle"
                                     fontSize="18"
                                     fontWeight="bold"
+                                    fill="#172B2A"
                                 >
                                     ₹{formatCurrency(totalExpense)}
                                 </text>
                                 <Tooltip contentStyle={{
                                     borderRadius: "12px",
-                                    border: "1px solid #ddd",
+                                    border: "1px solid #D5DDD7",
                                     boxShadow: "0 4px 12px rgba(0,0,0,0.1)"
                                 }} formatter={(value) => {
                                     const percentage = ((value / totalExpense) * 100).toFixed(1);

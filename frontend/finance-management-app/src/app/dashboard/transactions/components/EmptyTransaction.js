@@ -4,12 +4,12 @@ import { FaPlusCircle } from "react-icons/fa";
 
 const EmptyTransaction = ({ onAdd }) => {
   return (
-    <div className="mt-10 bg-purple-50 rounded-3xl shadow-xl p-5 text-center border border-purple-200">
+    <div className="mt-10 bg-white rounded-3xl shadow-xl p-5 text-center border border-purple-200">
 
       {/* Illustration */}
       <div className="text-6xl mb-4">💸</div>
 
-      <h2 className="text-3xl font-bold text-purple-700">
+      <h2 className="text-3xl font-bold text-emerald-700">
         Welcome to Montera!
       </h2>
 
@@ -19,7 +19,7 @@ const EmptyTransaction = ({ onAdd }) => {
 
       <button
         onClick={onAdd}
-        className="mt-8 bg-purple-700 hover:bg-purple-800 transition text-white px-6 py-3 rounded-xl flex items-center gap-2 mx-auto"
+        className="mt-8 bg-emerald-700 hover:bg-emerald-800 transition text-white px-6 py-3 rounded-xl flex items-center gap-2 mx-auto"
       >
         <FaPlusCircle />
         Add First Transaction
@@ -27,8 +27,8 @@ const EmptyTransaction = ({ onAdd }) => {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
 
-        <div className="bg-purple-100 rounded-xl p-5">
-          <h3 className="font-semibold text-purple-700">
+        <div className="bg-green-50 rounded-xl p-5">
+          <h3 className="font-semibold text-green-700">
             Track Income
           </h3>
           <p className="text-sm text-gray-600 mt-2">
@@ -36,8 +36,8 @@ const EmptyTransaction = ({ onAdd }) => {
           </p>
         </div>
 
-        <div className="bg-purple-100 rounded-xl p-5">
-          <h3 className="font-semibold text-purple-700">
+        <div className="bg-green-50 rounded-xl p-5">
+          <h3 className="font-semibold text-green-700">
             Monitor Expenses
           </h3>
           <p className="text-sm text-gray-600 mt-2">
@@ -45,8 +45,8 @@ const EmptyTransaction = ({ onAdd }) => {
           </p>
         </div>
 
-        <div className="bg-purple-100 rounded-xl p-5">
-          <h3 className="font-semibold text-purple-700">
+        <div className="bg-green-50 rounded-xl p-5">
+          <h3 className="font-semibold text-green-700">
             Build Savings
           </h3>
           <p className="text-sm text-gray-600 mt-2">

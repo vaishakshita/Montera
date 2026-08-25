@@ -8,9 +8,9 @@ const EmptyAnalytics = () => {
   return (
     <div className="bg-white rounded-3xl shadow-xl p-4 xl:w-2/3 mx-auto mt-2 text-center">
 
-      <FaChartLine className="mx-auto text-6xl text-purple-600 mb-4" />
+      <FaChartLine className="mx-auto text-6xl text-emerald-600 mb-4" />
 
-      <h2 className="text-4xl font-bold text-purple-700">
+      <h2 className="text-4xl font-bold text-emerald-700">
         No Analytics Yet
       </h2>
 
@@ -22,15 +22,15 @@ const EmptyAnalytics = () => {
 
       <button
             onClick={() => router.push("/dashboard/transactions")}
-            className="mt-5 bg-purple-700 text-white px-5 py-2 rounded-xl hover:bg-purple-800"
+            className="mt-5 bg-emerald-700 text-white px-5 py-2 rounded-xl hover:bg-emerald-800"
           >
             Add Transaction
       </button>
 
       <div className="grid grid-rows-3 gap-5 mt-10">
 
-        <div className="bg-purple-50 rounded-2xl p-5">
-          <h3 className="text-xl font-semibold text-purple-700">
+        <div className="bg-green-50 rounded-2xl p-5">
+          <h3 className="text-xl font-semibold text-emerald-700">
             Spending Trends
           </h3>
 
@@ -39,8 +39,8 @@ const EmptyAnalytics = () => {
           </p>
         </div>
 
-        <div className="bg-purple-50 rounded-2xl p-5">
-          <h3 className="text-xl font-semibold text-purple-700">
+        <div className="bg-green-50 rounded-2xl p-5">
+          <h3 className="text-xl font-semibold text-emerald-700">
             Income vs Expense
           </h3>
 
@@ -49,10 +49,10 @@ const EmptyAnalytics = () => {
           </p>
         </div>
 
-        <div className="bg-purple-50 rounded-2xl p-5">
-          <MdInsights className="mx-auto text-3xl text-purple-600 mb-2" />
+        <div className="bg-green-50 rounded-2xl p-5">
+          <MdInsights className="mx-auto text-3xl text-emerald-600 mb-2" />
 
-          <h3 className="text-xl font-semibold text-purple-700">
+          <h3 className="text-xl font-semibold text-emerald-700">
             AI Insights
           </h3>
 

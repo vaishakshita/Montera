@@ -74,30 +74,31 @@ const GoalModal = ({ setShowGoalModal, fetchGoals, editingGoal, setEditingGoal }
     return (
         <div className='fixed inset-0 p-7 bg-black/40 flex justify-center items-center z-50'>
             <div className='bg-white rounded-2xl p-8 w-full max-w-md shadow-xl'>
-                <h2 className='text-3xl font-bold text-purple-900 mb-2'>{editingGoal ? "Edit Goal" : "Add New Goal"}</h2>
+                <h2 className='text-3xl font-bold text-green-700 mb-2'>{editingGoal ? "Edit Goal" : "Add New Goal"}</h2>
                 <p className='text-gray-500 font-semibold mb-6'>{editingGoal ? "Update your savings goal details." : "Create a savings goal and track your progress over time."}</p>
                 <form onSubmit={handleSubmit}>
-                    <label className='font-medium'>Goal Name</label>
-                    <input type="text" value={title} className="w-full mt-2 mb-5 px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-purple-600" onChange={(e) => setTitle(e.target.value)} required />
+                    <label className='font-medium text-[#173F35]'>Goal Name</label>
+                    <input type="text" value={title} className="w-full text-[#173F35] mt-2 mb-5 px-4 py-3 rounded-xl bg-[#F8FAF8] border-2 border-[#9BAFA5] focus:border-[#2F6F5E] outline-none focus:ring-[#A8C1B6]" onChange={(e) => setTitle(e.target.value)} required />
 
-                    <label className='font-medium'>Target Amount</label>
-                    <input type="number" value={targetAmount} className="w-full mt-2 mb-5 px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-purple-600" onChange={(e) => setTargetAmount(e.target.value)} required />
+                    <label className='font-medium text-[#173F35]'>Target Amount</label>
+                    <input type="number" value={targetAmount} className="w-full text-[#173F35] mt-2 mb-5 px-4 py-3 rounded-xl bg-[#F8FAF8] border-2 border-[#9BAFA5] focus:border-[#2F6F5E] outline-none focus:ring-[#A8C1B6]" onChange={(e) => setTargetAmount(e.target.value)} required />
 
-                    <label className='font-medium'>Initial Savings</label>
-                    <input type="number" value={savedAmount} className="w-full mt-2 mb-5 px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-purple-600" onChange={(e) => setSavedAmount(e.target.value)} required />
+                    <label className='font-medium text-[#173F35]'>Initial Savings</label>
+                    <input type="number" value={savedAmount} className="w-full text-[#173F35] mt-2 mb-5 px-4 py-3 rounded-xl bg-[#F8FAF8] border-2 border-[#9BAFA5] focus:border-[#2F6F5E] outline-none focus:ring-[#A8C1B6]" onChange={(e) => setSavedAmount(e.target.value)} required />
 
-                    <label className='font-medium'>Deadline</label>
-                    <input type="date" value={deadline} className="w-full mt-2 mb-5 px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-purple-600" onChange={(e) => setDeadline(e.target.value)} required />
+                    <label className='font-medium text-[#173F35]'>Deadline</label>
+                    <input type="date" value={deadline} className="w-full text-[#173F35] mt-2 mb-5 px-4 py-3 rounded-xl bg-[#F8FAF8] border-2 border-[#9BAFA5] focus:border-[#2F6F5E] outline-none focus:ring-[#A8C1B6]" onChange={(e) => setDeadline(e.target.value)} required />
 
                     <div className='flex justify-end gap-3 mt-8'>
-                        <button type='button' disabled={loading} onClick={() => { setEditingGoal(null); setTitle(""); setTargetAmount(""); setSavedAmount(""); setDeadline(""); setShowGoalModal(false) }} className={`px-5 py-2 rounded-lg border border-gray-300 transition ${loading
+                        <button type='button' disabled={loading} onClick={() => { setEditingGoal(null); setTitle(""); setTargetAmount(""); setSavedAmount(""); setDeadline(""); setShowGoalModal(false) }} className={`px-5 py-2 rounded-lg border-2
+                        border-green-700 text-green-700 transition ${loading
                             ? "cursor-not-allowed opacity-50"
                             : "hover:bg-gray-100"
                             }`}>Cancel</button>
 
                         <button type='submit' disabled={loading} className={`px-5 py-2 rounded-lg text-white transition ${loading
-                            ? "bg-purple-400 cursor-not-allowed"
-                            : "bg-purple-600 hover:bg-purple-700"
+                            ? "bg-green-400 cursor-not-allowed"
+                            : "bg-green-800 hover:bg-green-900"
                             }`}>{loading ? (
                                 <ButtonLoader
                                     text={editingGoal ? "Updating..." : "Creating..."}

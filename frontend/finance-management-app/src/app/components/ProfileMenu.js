@@ -47,7 +47,7 @@ const ProfileMenu = ({ user }) => {
         onClick={() => setShow(!show)}
         className="flex items-center gap-3 bg-white border border-purple-200 rounded-full px-2 py-1 shadow-md hover:shadow-lg transition"
       >
-        <div className="w-10 h-10 rounded-full bg-purple-700 text-white font-bold flex items-center justify-center">
+        <div className="w-10 h-10 rounded-full bg-[#3F8065] text-white font-bold flex items-center justify-center">
           {initials}
         </div>
 
@@ -69,7 +69,7 @@ const ProfileMenu = ({ user }) => {
 
           <div className="flex items-center gap-3 p-5 bg-purple-50">
 
-            <div className="w-10 h-10 rounded-full bg-purple-700 text-white font-bold flex items-center justify-center">
+            <div className="w-10 h-10 rounded-full bg-green-700 text-white font-bold flex items-center justify-center">
               {initials}
             </div>
             <div>
@@ -88,19 +88,19 @@ const ProfileMenu = ({ user }) => {
           <div className="py-2">
 
             <button className="w-full flex items-center gap-3 px-5 py-3 hover:bg-purple-50 transition">
-              <FaUser className="text-purple-700" />
+              <FaUser className="text-green-700" />
               <span>My Profile</span>
               <span>(Coming soon...)</span>
             </button>
 
             <button className="w-full flex items-center gap-3 px-5 py-3 hover:bg-purple-50 transition">
-              <FaCog className="text-purple-700" />
+              <FaCog className="text-green-700" />
               <span>Settings</span>
               <span>(Coming soon...)</span>
             </button>
 
             <button className="w-full flex items-center gap-3 px-5 py-3 hover:bg-purple-50 transition">
-              <FaQuestionCircle className="text-purple-700" />
+              <FaQuestionCircle className="text-green-700" />
               <span>Help</span>
               <span>(Coming soon...)</span>
             </button>

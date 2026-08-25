@@ -40,22 +40,22 @@ const ExpenseLineChart = ({ transactions }) => {
       const month =
         monthNames[new Date(transaction.date).getMonth()];
 
-      monthlyData[month].expense += transaction.amount;
+      monthlyData[month].expense += Number(transaction.amount || 0);
     }
   });
 
   const chartData = Object.values(monthlyData);
 
   return (
-    <div className="bg-white rounded-3xl shadow-lg p-6 w-full h-[430px]">
+    <div className="bg-white rounded-2xl border border-[#D5DDD7] shadow-md p-5 sm:p-6 w-full h-[320px]">
 
-      <h2 className="text-2xl font-bold mb-6">
+      <h2 className="text-xl sm:text-2xl font-bold text-[#172B2A] mb-4">
         Monthly Expense Trend
       </h2>
 
-      <ResponsiveContainer width="100%" height="85%">
+      <ResponsiveContainer width="100%" height="82%">
 
-        <AreaChart data={chartData}>
+        <AreaChart data={chartData} margin={{ top: 5, right: 10, left: 5, bottom: 0, }}>
 
           <defs>
 
@@ -69,7 +69,7 @@ const ExpenseLineChart = ({ transactions }) => {
               <stop
                 offset="5%"
                 stopColor="#EF4444"
-                stopOpacity={0.4}
+                stopOpacity={0.20}
               />
 
               <stop
@@ -82,29 +82,29 @@ const ExpenseLineChart = ({ transactions }) => {
 
           </defs>
 
-          <CartesianGrid strokeDasharray="3 3" />
+          <CartesianGrid stroke="#E5E7EB" strokeDasharray="3 3" vertical={false}/>
 
-          <XAxis dataKey="month" />
+          <XAxis dataKey="month" tick={{ fontSize: 12, fill: "#64748B", }} axisLine={{ stroke: "#CBD5E1", }} tickLine={false}/>
 
           <YAxis
-            tickFormatter={formatCurrency}
+            tickFormatter={formatCurrency} tick={{ fontSize: 12, fill: "#64748B", }} axisLine={false} tickLine={false} width={65}
           />
 
           <Tooltip
-            formatter={(value) => formatCurrency(value)}
+            formatter={(value) => [formatCurrency(value), "Expense",]} labelStyle={{ color: "#172B2A", fontWeight: "600", }} contentStyle={{ borderRadius: "12px", border: "1px solid #D5DDD7", boxShadow: "0 4px 12px rgba(0,0,0,0.08)", }}
           />
 
           <Area
             type="monotone"
             dataKey="expense"
             stroke="#EF4444"
-            strokeWidth={3}
+            strokeWidth={2.5}
             fill="url(#expenseGradient)"
             dot={{
-              r: 5,
+              r: 5, fill: "#EF4444", strokeWidth: 2, stroke: "#FFFFFF",
             }}
             activeDot={{
-              r: 8,
+              r: 6, fill: "#EF4444", stroke: "#FFFFFF", strokeWidth: 2,
             }}
           />
 

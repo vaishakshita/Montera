@@ -47,31 +47,31 @@ const page = () => {
     }
   }
 
-  const inputDesign = "border-2 border-gray-400 hover:border-purple-400 focus:border-purple-600 outline-none focus:ring-1 focus:ring-purple-300 rounded-xl text-sm sm:text-xl";
+  const inputDesign = "bg-[#F8FAF8] border-2 border-[#9BAFA5] hover:border-[#6F8F82] focus:border-[#2F6F5E] outline-none focus:ring-1 focus:ring-[#A8C1B6] rounded-xl text-sm sm:text-xl px-3 h-12 transition";
 
   return (
     <>
       <Navbar />
-      <form onSubmit={handleLogin} className='bg-purple-100 shadow-2xl mx-auto max-w-[80vw] my-15 md:my-30 rounded-4xl sm:max-w-[40vw]'>
-        <h1 className='text-4xl text-center font-semibold font-sans py-5'>Login</h1>
+      <form onSubmit={handleLogin} className='bg-[#E7F0EA] shadow-2xl mx-auto max-w-[80vw] my-15 md:my-30 rounded-4xl sm:max-w-[40vw]'>
+        <h1 className='text-[#173F35] text-4xl text-center font-semibold font-sans py-5'>Login</h1>
         <div className='text-2xl flex flex-col mx-auto gap-4 max-w-[60vw] sm:max-w-[30vw] py-4'>
-          <label className='text-xl font-sans'>Email</label>
+          <label className='text-xl font-sans text-[#173F35]'>Email</label>
           <input type="email" placeholder='Enter email' onChange={(e) => setEmail(e.target.value)} className={inputDesign} />
-          <label className='text-xl font-sans'>Password</label>
+          <label className='text-xl font-sans text-[#173F35]'>Password</label>
           <div className='relative w-full'>
             <input placeholder='Enter password' onChange={(e) => setPassword(e.target.value)} type={showPassword ? "text" : "password"} className={`${inputDesign} w-full pr-12`} />
-            <button type='button' onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-purple-700">{showPassword ? <FiEyeOff size={22} /> : <FiEye size={22} />}</button>
+            <button type='button' onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-[#52665D] hover:text-[#2F6F5E] transition">{showPassword ? <FiEyeOff size={22} /> : <FiEye size={22} />}</button>
           </div>
         </div>
         <div className='flex justify-center items-center mt-7'>
           <button type='submit' disabled={loading} className={`text-xl h-14 w-40 rounded-4xl text-white transition flex items-center justify-center ${loading
-              ? "bg-purple-500 cursor-not-allowed"
-              : "bg-purple-800 hover:scale-105"
+              ? "bg-[#7FA394] cursor-not-allowed"
+              : "bg-[#2F6F5E] hover:bg-[#255B4D] hover:scale-105"
             }`}>{loading ? <ButtonLoader text="Logging in..." /> : "Login"}</button>
         </div>
         <p className='flex flex-col md:flex-row gap-3 justify-center items-center text-xl py-10 lg:text-2xl'>
           Don't have an account?{' '}
-          <Link href="/signup" className="text-purple-700 font-medium hover:underline">
+          <Link href="/signup" className="text-[#2F6F5E] hover:text-[#255B4D] font-medium hover:underline">
             Sign Up
           </Link>
         </p>

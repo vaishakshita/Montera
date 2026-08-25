@@ -129,14 +129,14 @@ const page = () => {
         <div className='ml-0 md:ml-10 py-3 px-5 md:p-2 max-w-6xl mx-auto'>
           {/* Top Bar */}
           <div className="flex justify-between items-center mb-4">
-            <h1 className="text-4xl font-semibold text-slate-800">
+            <h1 className="text-4xl font-semibold text-[#172B2A]">
               Welcome back, {user?.name}!
             </h1>
 
             {/* Profile */}
             <ProfileMenu user={user} />
           </div>
-          <p className="text-gray-600 text-xl font-sans mx-auto">Let's take a look at your finances today.</p>
+          <p className="text-[#64748B] text-xl font-sans mx-auto">Let's take a look at your finances today.</p>
 
           {/* Cards */}
           <div>

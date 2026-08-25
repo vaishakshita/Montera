@@ -10,7 +10,7 @@ const EmptyPlanner = ({ onAddGoal, onAddBudget }) => {
       <div className="text-6xl mb-4">🎯</div>
 
       {/* Heading */}
-      <h2 className="text-4xl font-bold text-purple-700">
+      <h2 className="text-4xl font-bold text-emerald-700">
         Start Planning Your Financial Future
       </h2>
 
@@ -27,14 +27,14 @@ const EmptyPlanner = ({ onAddGoal, onAddBudget }) => {
 
         <button
           onClick={onAddGoal}
-          className="bg-purple-700 hover:bg-purple-800 text-white px-8 py-3 rounded-xl font-semibold transition"
+          className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 rounded-xl font-semibold transition"
         >
           + Create First Goal
         </button>
 
         <button
           onClick={onAddBudget}
-          className="border-2 border-purple-700 text-purple-700 hover:bg-purple-700 hover:text-white px-8 py-3 rounded-xl font-semibold transition"
+          className="border-2 border-emerald-600 text-emerald-700 hover:bg-emerald-600 hover:text-white px-8 py-3 rounded-xl font-semibold transition"
         >
           + Create Budget
         </button>
@@ -44,13 +44,13 @@ const EmptyPlanner = ({ onAddGoal, onAddBudget }) => {
       {/* Feature Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
 
-        <div className="bg-purple-50 rounded-2xl p-6">
+        <div className="bg-green-50 rounded-2xl p-6">
           <FaBullseye
             size={40}
-            className="mx-auto text-purple-700 mb-4"
+            className="mx-auto text-emerald-600 mb-4"
           />
 
-          <h3 className="text-xl font-semibold text-purple-700">
+          <h3 className="text-xl font-semibold text-emerald-700">
             Savings Goals
           </h3>
 
@@ -60,13 +60,13 @@ const EmptyPlanner = ({ onAddGoal, onAddBudget }) => {
           </p>
         </div>
 
-        <div className="bg-purple-50 rounded-2xl p-6">
+        <div className="bg-green-50 rounded-2xl p-6">
           <FaWallet
             size={40}
-            className="mx-auto text-purple-700 mb-4"
+            className="mx-auto text-emerald-600 mb-4"
           />
 
-          <h3 className="text-xl font-semibold text-purple-700">
+          <h3 className="text-xl font-semibold text-emerald-700">
             Monthly Budgets
           </h3>
 
@@ -76,13 +76,13 @@ const EmptyPlanner = ({ onAddGoal, onAddBudget }) => {
           </p>
         </div>
 
-        <div className="bg-purple-50 rounded-2xl p-6">
+        <div className="bg-green-50 rounded-2xl p-6">
           <FaPiggyBank
             size={40}
-            className="mx-auto text-purple-700 mb-4"
+            className="mx-auto text-emerald-600 mb-4"
           />
 
-          <h3 className="text-xl font-semibold text-purple-700">
+          <h3 className="text-xl font-semibold text-emerald-700">
             Track Progress
           </h3>
 

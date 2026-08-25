@@ -44,10 +44,10 @@ const AddSavingsmodal = ({ setShowSavingModal, selectedGoalForSavings, fetchGoal
         <div className="fixed inset-0 bg-black/40 flex justify-center items-center p-7 z-50">
             <div className="bg-white rounded-2xl p-8 w-full max-w-md shadow-xl">
                 <form onSubmit={handleSubmit}>
-                    <h2 className="text-3xl font-bold text-purple-900">Add savings</h2>
+                    <h2 className="text-3xl font-bold text-green-700">Add savings</h2>
                     <p className="text-gray-500 mt-2 mb-6">Deposit money into this goal</p>
                     <label className='font-medium'>Amount</label>
-                    <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} className="w-full mt-2 px-4 py-3 border rounded-xl focus:ring-2 focus:ring-purple-300" />
+                    <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} className="w-full mt-2 px-4 py-3 rounded-xl bg-[#F8FAF8] border-2 border-[#9BAFA5] focus:border-[#2F6F5E]" />
                     <div className="flex justify-end gap-3 mt-8">
                         <button type='button' disabled={loading} onClick={() => { setAmount(""); setShowSavingModal(false) }} className={`px-5 py-2 border rounded-lg transition ${loading
                             ? "opacity-50 cursor-not-allowed"
@@ -55,8 +55,8 @@ const AddSavingsmodal = ({ setShowSavingModal, selectedGoalForSavings, fetchGoal
                             }`}>Cancel</button>
 
                         <button type='submit' disabled={loading} className={`px-5 py-2 text-white rounded-lg ${loading
-                            ? "bg-purple-400 cursor-not-allowed"
-                            : "bg-purple-700 hover:bg-purple-800"
+                            ? "bg-green-400 cursor-not-allowed"
+                            : "bg-green-800 hover:bg-green-900"
                             }`}>{loading ? (<ButtonLoader text="Adding..." />) : ("Add Savings")}</button>
                     </div>
                 </form>

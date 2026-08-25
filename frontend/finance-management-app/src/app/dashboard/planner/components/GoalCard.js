@@ -5,15 +5,15 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaPlus } from "react-icons/fa6";
 
 const GoalCard = ({ goal, onEdit, onDelete, onSavings }) => {
-  const progress = (goal.savedAmount / goal.targetAmount) * 100
+  const progress = Math.min((goal.savedAmount / goal.targetAmount) * 100, 100)
   const completed = goal.savedAmount >= goal.targetAmount
   return (
-    <div className='bg-white rounded-2xl shadow-md border border-purple-100 p-6 hover:shadow-xl transition'>
+    <div className='bg-white rounded-2xl shadow-md border border-green-100 p-6 hover:shadow-xl transition'>
       <div className='flex justify-between items-start'>
         <div>
           <div className='flex items-center gap-3'>
-            <GoGoal size={30} className='text-purple-700' />
-            <h2 className='text-2xl font-bold text-purple-900'>{goal.title}</h2>
+            <GoGoal size={30} className='text-green-600' />
+            <h2 className='text-2xl font-bold text-green-800'>{goal.title}</h2>
           </div>
           <p className='text-gray-500 mt-2'>₹{goal.savedAmount.toLocaleString()} / ₹{goal.targetAmount.toLocaleString()}</p>
         </div>
@@ -22,7 +22,7 @@ const GoalCard = ({ goal, onEdit, onDelete, onSavings }) => {
             ✓ Completed
           </span>
         ) : (
-          <span className="text-sm bg-purple-100 text-purple-700 px-3 py-1 rounded-full">
+          <span className="text-sm bg-purple-100 text-green-700 px-3 py-1 rounded-full">
             {progress.toFixed(0)}%
           </span>
         )}
@@ -31,8 +31,8 @@ const GoalCard = ({ goal, onEdit, onDelete, onSavings }) => {
       <div className='mt-5'>
         <div className='w-full h-3 rounded-full bg-gray-200 overflow-hidden'>
           <div style={{ width: `${progress}%` }} className={`h-full rounded-full ${completed
-              ? "bg-green-500"
-              : "bg-gradient-to-r from-purple-500 to-pink-500"
+              ? "bg-green-600"
+              : "bg-gradient-to-r from-green-500 to-emerald-400"
             }`} />
         </div>
       </div>
@@ -40,7 +40,7 @@ const GoalCard = ({ goal, onEdit, onDelete, onSavings }) => {
       <div className='mt-6 flex justify-between items-center'>
         <div>
           <p className='text-sm text-gray-500'>Deadline</p>
-          <p className='font-semibold'>{new Date(goal.deadline).toLocaleDateString()}</p>
+          <p className='font-semibold text-gray-800'>{new Date(goal.deadline).toLocaleDateString()}</p>
         </div>
 
         <div className='flex items-center gap-3'>
