@@ -35,6 +35,7 @@ const page = () => {
 
       if (!res.ok) {
         toast.error(data.message || "Login failed")
+        return;
       }
       localStorage.setItem("token", data.token);
       toast.success("Login Successful");
